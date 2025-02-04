@@ -8,8 +8,8 @@
     <div class="p-toolbar-group-end">
       <p-button
         label="Add New Model"
-        styleClass="p-button-outlined"
-        icon="pi pi-plus"
+[outlined]="true"      
+  icon="pi pi-plus"
         (click)="navigateModelAdd()"
       ></p-button>
     </div>
@@ -20,7 +20,7 @@
     editMode="row"
     [tableStyle]="{ 'min-width': '50rem' }"
     [scrollable]="true"
-    scrollHeight="400px"
+    scrollHeight="flex"
   >
     <ng-template pTemplate="header">
       <tr>
@@ -144,8 +144,8 @@
         </td>
         <td>
           <p-button
-          styleClass="p-button-outlined"
-                      (click)="navigateServices(record)"
+            (click)="navigateServices(record)"
+            [outlined]="true"
             icon="pi pi-external-link"
             size="small"
             label="Services"
