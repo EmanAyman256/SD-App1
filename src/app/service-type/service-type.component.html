@@ -2,7 +2,7 @@
     <p-toast></p-toast>
     <div class="card mt-5">
     <p-table [value]="records"  dataKey="serviceTypeCode" styleClass="p-datatable-gridlines" editMode="row" [tableStyle]="{'min-width': '50rem'}"
-    [scrollable]="true" scrollHeight="400px">
+    [scrollable]="true" scrollHeight="flex">
         <ng-template pTemplate="caption">
             <div class="flex align-items-center justify-content-between">
                 Service Types:
@@ -61,7 +61,7 @@
             <td>
             </td>
             <td>
-                <button pButton type="button" icon="pi pi-plus" class="ui-button-info rounded-input" label="Add"
+                <button pButton type="button" icon="pi pi-plus" class="p-button-outlined" label="Add"
                     [disabled]="" (click)="addRow()">
                 </button>
             </td>
@@ -70,6 +70,5 @@
     </p-table>
 
 </div>
-
     
 <p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>

@@ -7,14 +7,14 @@
                 class=" text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary" />
         </div>
         <div class="flex justify-content-center flex-wrap">
-        <p-button label="Show Result" [rounded]="true"  (onClick)="showResult()" ></p-button>
+        <p-button label="Show Result" styleClass="p-button-rounded"  (onClick)="showResult()" ></p-button>
         </div>
 
     </ng-template>
     <ng-template pTemplate="footer">
         <div class="flex justify-content-between flex-wrap">
-             <p-button label="Back" (onClick)="prevPage()" [rounded]="true"  icon="pi pi-angle-left"></p-button> 
-            <p-button label="Confirm & Save" (onClick)="saveFormula()" [rounded]="true"  ></p-button>
+             <p-button label="Back" (onClick)="prevPage()"styleClass="p-button-rounded" icon="pi pi-angle-left"></p-button> 
+            <p-button label="Confirm & Save" (onClick)="saveFormula()"styleClass="p-button-rounded" ></p-button>
         </div>
     </ng-template>
 </p-card>

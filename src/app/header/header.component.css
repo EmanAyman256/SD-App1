@@ -1,35 +1,33 @@
 .nav-link {
   position: relative;
-  color: #fff;
+  color: #000;
   text-decoration: none;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .nav-link:hover {
-  background-color: #fff;
-  color: #000;
+  background-color: var(--main-color);
+  color: #fff;
   border-radius: 5px;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
-.offcanvas.show {
-  background-color: rgb(5, 6, 22);
-}
+
 
 .offcanvas .offcanvas-title {
-  color: white;
+  color: black;
 }
 
 .offcanvas.show .offcanvas-header {
-  color: white;
+  color: black;
 }
 
 .offcanvas-header .btn-close {
-  color: white !important;
+  color: black !important;
   background-color: transparent !important;
 }
 
 
 .offcanvas.show .offcanvas-body {
-  color: white;
+  color: black;
 }

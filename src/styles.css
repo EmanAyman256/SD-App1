@@ -8,7 +8,9 @@
 
 
 @import "primeflex/primeflex.css";
-
+:root{
+  --main-color:#007BFF
+}
 
 
 .container {
