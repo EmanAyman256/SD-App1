@@ -1,16 +1,16 @@
-<p-card class="m-2">
-  <div class="row">
-    <div class="form-group col-4">
+<p-card class="m-2 mt-4">
+  <div class="flex flex-wrap overflow-hidden">
+    <div class="form-group flex-grow-1 flex-shrink-1 flex align-items-center m-3">
       <label for="shortText" class="fw-bold mr-2">Sh.Text:</label>
       <ng-container *ngIf="modelSpecRecord">
-        <div class="inline-element border border-1 border-black rounded-input">
+        <div class="inline-element border border-1 border-info rounded-input">
           {{ modelSpecRecord.description }}
         </div>
       </ng-container>
     </div>
-    <div class="form-group col-5">
+    <div class="form-group flex-shrink-0 flex align-items-center justify-content-center m-3">
       <label for="totalValue" class="fw-bold mr-2">TotalValue:</label>
-      <div class="inline-element border border-1 border-black rounded-input">
+      <div class="inline-element border border-1 border-info rounded-input">
         {{ totalValue }}
       </div>
       <ng-container *ngIf="modelSpecRecord">
@@ -19,7 +19,7 @@
         </div>
       </ng-container>
     </div>
-    <div class="form-group col-3">
+    <div class="form-group flex-grow-1 flex-shrink-1 flex align-items-center justify-content-center m-3">
       <p-button
       [outlined]="true"
       label="Export"
@@ -62,11 +62,7 @@
     ></p-button>
   </ng-template>
   <ng-template pTemplate="left">
-    <!-- <div class="field">
-            <input pInputText type="number" placeholder="Search for Line..."
-                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary "
-                [(ngModel)]="searchValue" (input)="onSearchInputChange()" />
-        </div> -->
+   
     <div class="field">
       <input
         pInputText
@@ -82,13 +78,15 @@
 <p-toast></p-toast>
 
 <p-table
+  #dt
+  class="overflow-auto"
   [value]="records"
   [scrollable]="true"
-  styleClass="p-datatable-gridlines"
-  responsiveLayout="stack"
-  [breakpoint]="'960px'"
+  scrollHeight="flex"
   dataKey="modelSpecDetailsCode"
-  editMode="row"
+  [rowHover]="true"
+  [showCurrentPageReport]="true"
+  [rows]="10"
   [tableStyle]="{ 'min-width': '50rem' }"
   [responsive]="true"
 >
@@ -100,36 +98,35 @@
           [value]="records"
         ></p-checkbox>
       </th>
-      <th fd-table-cell>Line</th>
-      <!-- <th fd-table-cell>Del.Ind</th> -->
-      <th fd-table-cell pResizableColumn>Service.No</th>
-      <th fd-table-cell pResizableColumn>ShortText</th>
-      <th fd-table-cell pResizableColumn>Quantity</th>
-      <th fd-table-cell>Formula</th>
-      <th fd-table-cell>Formula Parameters</th>
-      <th fd-table-cell>GrossPrice</th>
-      <th fd-table-cell>Net Value</th>
-      <th fd-table-cell pResizableColumn>
+      <th class="text-center" fd-table-cell>Line</th>
+      <th class="text-center" fd-table-cell pResizableColumn>Service.No</th>
+      <th class="text-center" fd-table-cell pResizableColumn>ShortText</th>
+      <th class="text-center" fd-table-cell pResizableColumn>Quantity</th>
+      <th class="text-center" fd-table-cell>Formula</th>
+      <th class="text-center" fd-table-cell>Formula Parameters</th>
+      <th class="text-center" fd-table-cell>GrossPrice</th>
+      <th class="text-center" fd-table-cell>Net Value</th>
+      <th  class="text-center" fd-table-cell pResizableColumn>
         UnitOfMeasure<span style="color: red; margin: 5px">*</span>
       </th>
-      <th fd-table-cell>Crcy</th>
-      <th fd-table-cell>OverF.Percentage</th>
-      <th fd-table-cell>PriceChangeAllowed</th>
-      <th fd-table-cell pResizableColumn>UnlimitedOverF</th>
-      <th fd-table-cell pResizableColumn>PricePerUnitOfMeasurement</th>
-      <th fd-table-cell pResizableColumn>Mat Group</th>
-      <th fd-table-cell>Service Type</th>
-      <th fd-table-cell pResizableColumn>External.Service.No</th>
-      <th fd-table-cell pResizableColumn>Service Text</th>
-      <th fd-table-cell pResizableColumn>Line Text</th>
-      <th fd-table-cell>PersonnelNumber</th>
-      <th fd-table-cell>Line Type</th>
-      <th fd-table-cell>Line Number</th>
-      <th fd-table-cell pResizableColumn>Alt</th>
-      <th fd-table-cell>Bidder's Line</th>
-      <th fd-table-cell>Supp.Line</th>
-      <th fd-table-cell>Cstg Ls</th>
-      <th fd-table-cell>Actions</th>
+      <th class="text-center" fd-table-cell>Crcy</th>
+      <th class="text-center" fd-table-cell>OverF.Percentage</th>
+      <th class="text-center" fd-table-cell>PriceChangeAllowed</th>
+      <th class="text-center" fd-table-cell pResizableColumn>UnlimitedOverF</th>
+      <th class="text-center" fd-table-cell pResizableColumn>PricePerUnitOfMeasurement</th>
+      <th class="text-center" fd-table-cell pResizableColumn>Mat Group</th>
+      <th class="text-center" fd-table-cell>Service Type</th>
+      <th class="text-center" fd-table-cell pResizableColumn>External.Service.No</th>
+      <th class="text-center" fd-table-cell pResizableColumn>Service Text</th>
+      <th class="text-center" fd-table-cell pResizableColumn>Line Text</th>
+      <th class="text-center" fd-table-cell>PersonnelNumber</th>
+      <th class="text-center" fd-table-cell>Line Type</th>
+      <th class="text-center" fd-table-cell>Line Number</th>
+      <th class="text-center" fd-table-cell pResizableColumn>Alt</th>
+      <th class="text-center" fd-table-cell>Bidder's Line</th>
+      <th class="text-center" fd-table-cell>Supp.Line</th>
+      <th class="text-center" fd-table-cell>Cstg Ls</th>
+      <th class="text-center" fd-table-cell>Actions</th>
     </tr>
   </ng-template>
   <ng-template
@@ -140,27 +137,17 @@
     let-ri="rowIndex"
   >
     <tr [pEditableRow]="record" *ngIf="isMatch(record, ri)">
-      <td>
+      <td class="text-center">
         <p-checkbox
           [(ngModel)]="selectedAllRecords"
           (onChange)="onRecordSelectionChange($event, record)"
           [value]="record"
         ></p-checkbox>
       </td>
-      <td>
+      <td class="text-center">
         {{ rowIndex + ri + 1 }}
       </td>
-      <!-- <td pEditableColumn>
-                <p-cellEditor>
-                    <ng-template pTemplate="input">
-                        <input pInputText type="checkbox" [(ngModel)]="record.deletionIndicator">
-                    </ng-template>
-                    <ng-template pTemplate="output">
-                        {{record.deletionIndicator}}
-                    </ng-template>
-                </p-cellEditor>
-            </td> -->
-      <td pEditableColumn>
+      <td class="text-center" pEditableColumn>
         <p-cellEditor>
           <ng-template pTemplate="input">
             <p-dropdown
@@ -191,7 +178,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td>
+      <td class="text-center">
         <p-cellEditor>
           <ng-template pTemplate="input">
             <ng-container *ngIf="!updateSelectedServiceNumberRecord">
@@ -230,7 +217,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td>
+      <td class="text-center">
         <p-cellEditor>
           <ng-template pTemplate="input">
             <ng-container *ngIf="!updatedFormulaRecord">
@@ -251,7 +238,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td pEditableColumn>
+      <td class="text-center" pEditableColumn>
         <p-cellEditor>
           <ng-template pTemplate="input">
             <p-dropdown
@@ -280,7 +267,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td>
+      <td class="text-center">
         <p-button
         styleClass="p-button-outlined"
                   label="Enter Parameters"
@@ -288,22 +275,8 @@
           (click)="openPopupUpdate()"
         >
         </p-button>
-        <!-- <ng-container *ngIf="showPopupUpdate && updatedFormulaRecord ">
-                    <div class="popup">
-                        <h3>Enter Parameters</h3>
-                        <div *ngFor="let parameterId of updatedFormulaRecord.parameterIds">
-                            <label class="form-label">{{ parameterId }}:</label>
-                            <input pInputNumber class="form-input" type="number" [min]="0"
-                                [(ngModel)]="parameterValuesUpdate[parameterId]">
-                        </div>
-                        <button class="form-button" (click)="saveParameters()">Save</button>
-                    </div>
-                </ng-container> -->
-        <!-- <ng-container *ngIf="!updatedFormulaRecord ">
-                    Formula Parameters
-                </ng-container> -->
       </td>
-      <td>
+      <td class="text-center">
         <p-cellEditor>
           <ng-template pTemplate="input">
             <input
@@ -319,7 +292,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td>
+      <td class="text-center">
         <p-cellEditor>
           <ng-template pTemplate="input">
             <ng-container *ngIf="updatedFormulaRecord && resultAfterTestUpdate">
@@ -335,7 +308,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td pEditableColumn>
+      <td class="text-center" pEditableColumn>
         <p-cellEditor>
           <ng-template pTemplate="input">
             <ng-container *ngIf="updateSelectedServiceNumberRecord">
@@ -370,13 +343,12 @@
           </ng-template>
         </p-cellEditor>
       </td>
-
-      <td>
+      <td class="text-center">
         <ng-container *ngIf="modelSpecRecord">
           {{ modelSpecRecord.currencyCode }}
         </ng-container>
       </td>
-      <td>
+      <td class="text-center">
         <p-cellEditor>
           <ng-template pTemplate="input">
             <input
@@ -392,8 +364,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-
-      <td>
+      <td class="text-center">
         <p-cellEditor>
           <ng-template pTemplate="input">
             <input
@@ -407,7 +378,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td>
+      <td class="text-center">
         <p-cellEditor>
           <ng-template pTemplate="input">
             <input
@@ -421,7 +392,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td>
+      <td class="text-center">
         <p-cellEditor>
           <ng-template pTemplate="input">
             <input
@@ -437,7 +408,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td pEditableColumn>
+      <td class="text-center" pEditableColumn>
         <p-cellEditor>
           <ng-template pTemplate="input">
             <ng-container *ngIf="updateSelectedServiceNumberRecord">
@@ -471,7 +442,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td pEditableColumn>
+      <td class="text-center" pEditableColumn>
         <p-cellEditor>
           <ng-template pTemplate="input">
             <ng-container *ngIf="updateSelectedServiceNumberRecord">
@@ -504,7 +475,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td>
+      <td class="text-center">
         <p-cellEditor>
           <ng-template pTemplate="input">
             <input
@@ -519,8 +490,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-
-      <td>
+      <td class="text-center">
         <p-cellEditor>
           <ng-template pTemplate="input">
             <ng-container *ngIf="updateSelectedServiceNumberRecord">
@@ -540,7 +510,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td>
+      <td class="text-center">
         <p-cellEditor>
           <ng-template pTemplate="input">
             <input
@@ -555,7 +525,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td pEditableColumn>
+      <td class="text-center" pEditableColumn>
         <p-cellEditor>
           <ng-template pTemplate="input">
             <p-dropdown
@@ -583,7 +553,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td pEditableColumn>
+      <td class="text-center" pEditableColumn>
         <p-cellEditor>
           <ng-template pTemplate="input">
             <p-dropdown
@@ -611,8 +581,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-
-      <td>
+      <td class="text-center">
         <p-cellEditor>
           <ng-template pTemplate="input">
             <input
@@ -627,7 +596,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td>
+      <td class="text-center">
         <p-cellEditor>
           <ng-template pTemplate="input">
             <input
@@ -642,7 +611,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td>
+      <td class="text-center">
         <p-cellEditor>
           <ng-template pTemplate="input">
             <input
@@ -656,7 +625,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td>
+      <td class="text-center">
         <p-cellEditor>
           <ng-template pTemplate="input">
             <input
@@ -670,7 +639,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td>
+      <td class="text-center">
         <p-cellEditor>
           <ng-template pTemplate="input">
             <input
@@ -684,7 +653,7 @@
           </ng-template>
         </p-cellEditor>
       </td>
-      <td>
+      <td class="text-center">
         <div class="flex align-items-center justify-content-center gap-2">
           <button
             *ngIf="!editing"
@@ -720,15 +689,14 @@
       </td>
     </tr>
   </ng-template>
-
   <ng-template pTemplate="footer" class="m-3">
     <ng-container *ngIf="parsedData">
       <tr *ngFor="let item of parsedData; let i = index">
-        <td>
+        <td class="text-center">
           <p-checkbox [value]="item"></p-checkbox>
         </td>
-        <td></td>
-        <td>
+        <td class="text-center"></td>
+        <td class="text-center">
           <p-dropdown
             [options]="recordsServiceNumber"
             [(ngModel)]="item.serviceNumberCode"
@@ -752,14 +720,8 @@
             </ng-template>
           </p-dropdown>
         </td>
-        <td>
-          <!-- <ng-container *ngIf="!selectedServiceNumberRecord">
-                            <input pInputText class="rounded-input" type="text" [(ngModel)]="newService.shortText">
-                        </ng-container>
-                        <ng-container *ngIf="shortTextChangeAllowed && selectedServiceNumberRecord">
-                            <input pInputText class="rounded-input" type="text" [(ngModel)]="selectedServiceNumberRecord.description"
-                                (ngModelChange)="shortText = $event">
-                        </ng-container>-->
+        <td class="text-center">
+   
           <ng-container *ngIf="selectedServiceNumberRecordForExcel">
             {{ selectedServiceNumberRecordForExcel.description }}
           </ng-container>
@@ -771,10 +733,9 @@
               [(ngModel)]="item.shortText"
             />
           </ng-container>
-          <!-- <input pInputText class="rounded-input" type="text" [(ngModel)]="item.shortText"> -->
         </td>
 
-        <td>
+        <td class="text-center">
           <ng-container
             *ngIf="
               item.formulaCode &&
@@ -796,7 +757,7 @@
           </ng-container>
         </td>
 
-        <td>
+        <td class="text-center">
           <p-dropdown
             [options]="recordsFormula"
             [(ngModel)]="item.formulaCode"
@@ -820,23 +781,12 @@
           </p-dropdown>
         </td>
 
-        <td>
+        <td class="text-center">
           <button class="mb-2" (click)="openPopup()">Enter Parameters</button>
-          <!-- <ng-container *ngIf="showPopup && selectedFormulaRecord ">
-                            <div class="popup">
-                                <h3>Enter Parameters</h3>
-                                <div *ngFor="let parameterId of selectedFormulaRecord.parameterIds">
-        
-                                    <label class="form-label">{{ parameterId }}:</label>
-                                    <input class="form-input" pInputNumber type="number" [min]="0"
-                                        [(ngModel)]="parameterValues[parameterId]">
-                                </div>
-                                <button class="form-button" (click)="saveParameters()">Save</button>
-                            </div>
-                        </ng-container> -->
+       
         </td>
 
-        <td>
+        <td class="text-center">
           <input
             name="grossPrice"
             class="rounded-input"
@@ -846,7 +796,7 @@
             [(ngModel)]="item.grossPrice"
           />
         </td>
-        <td>
+        <td class="text-center">
           <ng-container
             *ngIf="selectedFormulaRecordForExcel && resultAfterTest"
           >
@@ -855,10 +805,9 @@
           <ng-container *ngIf="!selectedFormulaRecordForExcel">
             {{ item.quantity * item.grossPrice }}
           </ng-container>
-          <!-- <input name="netValue" type="number" [(ngModel)]="newService.netValue"> -->
         </td>
 
-        <td>
+        <td class="text-center">
           <ng-container *ngIf="selectedServiceNumberRecordForExcel">
             {{ selectedServiceNumberRecordForExcel.baseUnitOfMeasurement }}
           </ng-container>
@@ -888,13 +837,13 @@
           </ng-container>
         </td>
 
-        <td>
+        <td class="text-center">
           <ng-container *ngIf="modelSpecRecord">
             {{ modelSpecRecord.currencyCode }}
           </ng-container>
         </td>
 
-        <td>
+        <td class="text-center">
           <input
             pInputNumber
             class="rounded-input"
@@ -905,7 +854,7 @@
           />
         </td>
 
-        <td>
+        <td class="text-center">
           <input
             name="priceChangedAllowed"
             type="checkbox"
@@ -913,7 +862,7 @@
           />
         </td>
 
-        <td>
+        <td class="text-center">
           <input
             name="unlimitedOverFulfillment"
             type="checkbox"
@@ -921,7 +870,7 @@
           />
         </td>
 
-        <td>
+        <td class="text-center">
           <input
             pInputNumber
             class="rounded-input"
@@ -932,7 +881,7 @@
           />
         </td>
 
-        <td>
+        <td class="text-center">
           <ng-container *ngIf="selectedServiceNumberRecordForExcel">
             {{ selectedServiceNumberRecordForExcel.materialGroupCode }}
           </ng-container>
@@ -960,7 +909,7 @@
           </ng-container>
         </td>
 
-        <td>
+        <td class="text-center">
           <ng-container *ngIf="selectedServiceNumberRecordForExcel">
             {{ selectedServiceNumberRecordForExcel.serviceTypeCode }}
           </ng-container>
@@ -987,7 +936,7 @@
           </ng-container>
         </td>
 
-        <td>
+        <td class="text-center">
           <input
             pInputText
             class="rounded-input"
@@ -997,7 +946,7 @@
           />
         </td>
 
-        <td>
+        <td class="text-center">
           <ng-container *ngIf="selectedServiceNumberRecordForExcel">
             {{ selectedServiceNumberRecordForExcel.serviceText }}
           </ng-container>
@@ -1011,7 +960,7 @@
           </ng-container>
         </td>
 
-        <td>
+        <td class="text-center">
           <input
             pInputText
             class="rounded-input"
@@ -1021,7 +970,7 @@
           />
         </td>
 
-        <td>
+        <td class="text-center">
           <p-dropdown
             [options]="recordsPersonnelNumber"
             [(ngModel)]="item.personnelNumberCode"
@@ -1043,7 +992,7 @@
           </p-dropdown>
         </td>
 
-        <td>
+        <td class="text-center">
           <p-dropdown
             [options]="recordsLineType"
             [(ngModel)]="item.lineTypeCode"
@@ -1065,7 +1014,7 @@
           </p-dropdown>
         </td>
 
-        <td>
+        <td class="text-center">
           <input
             pInputText
             class="rounded-input"
@@ -1075,7 +1024,7 @@
           />
         </td>
 
-        <td>
+        <td class="text-center">
           <input
             pInputText
             class="rounded-input"
@@ -1085,7 +1034,7 @@
           />
         </td>
 
-        <td>
+        <td class="text-center">
           <input
             name="biddersLine"
             type="checkbox"
@@ -1093,7 +1042,7 @@
           />
         </td>
 
-        <td>
+        <td class="text-center">
           <input
             name="supplementaryLine"
             type="checkbox"
@@ -1101,7 +1050,7 @@
           />
         </td>
 
-        <td>
+        <td class="text-center">
           <input
             name="lotSizeForCostingIsOne"
             type="checkbox"
@@ -1131,25 +1080,19 @@
           </div>
         </td>
 
-        <!-- <td>
-                        <button pButton type="button" icon="pi pi-plus" class="ui-button-info rounded-input" label="Save Line"
-                            (click)="saveMainItemFromExcel(item)">
-                        </button>
-                    </td> -->
+
       </tr>
     </ng-container>
     <tr>
-      <td>
+      <td class="text-center">
         <p-checkbox [value]="newService"></p-checkbox>
       </td>
 
-      <td></td>
+      <td class="text-center"></td>
 
-      <!-- <td>
-                <input name="deletionIndicator" type="checkbox" [(ngModel)]="newService.deletionIndicator">
-            </td> -->
+    
 
-      <td>
+      <td class="text-center">
         <p-dropdown
           [options]="recordsServiceNumber"
           [(ngModel)]="selectedServiceNumber"
@@ -1174,7 +1117,7 @@
         </p-dropdown>
       </td>
 
-      <td>
+      <td class="text-center">
         <ng-container *ngIf="!selectedServiceNumberRecord">
           <input
             pInputText
@@ -1202,7 +1145,7 @@
         <!-- <input pInputText type="text" [(ngModel)]="newService.shortText"> -->
       </td>
 
-      <td>
+      <td class="text-center">
         <ng-container
           *ngIf="selectedFormula && selectedFormulaRecord && resultAfterTest"
         >
@@ -1220,7 +1163,7 @@
         </ng-container>
       </td>
 
-      <td>
+      <td class="text-center">
         <p-dropdown
           [options]="recordsFormula"
           [(ngModel)]="selectedFormula"
@@ -1244,23 +1187,12 @@
         </p-dropdown>
       </td>
 
-      <td>
+      <td class="text-center">
         <button class="mb-2" (click)="openPopup()">Enter Parameters</button>
-        <!-- <ng-container *ngIf="showPopup && selectedFormulaRecord ">
-                    <div class="popup">
-                        <h3>Enter Parameters</h3>
-                        <div *ngFor="let parameterId of selectedFormulaRecord.parameterIds">
 
-                            <label class="form-label">{{ parameterId }}:</label>
-                            <input class="form-input" pInputNumber type="number" [min]="0"
-                                [(ngModel)]="parameterValues[parameterId]">
-                        </div>
-                        <button class="form-button" (click)="saveParameters()">Save</button>
-                    </div>
-                </ng-container> -->
       </td>
 
-      <td>
+      <td class="text-center">
         <input
           name="grossPrice"
           class="rounded-input"
@@ -1270,7 +1202,7 @@
           [(ngModel)]="newService.grossPrice"
         />
       </td>
-      <td>
+      <td class="text-center">
         <ng-container *ngIf="selectedFormulaRecord && resultAfterTest">
           {{ resultAfterTest * newService.grossPrice }}
         </ng-container>
@@ -1280,7 +1212,7 @@
         <!-- <input name="netValue" type="number" [(ngModel)]="newService.netValue"> -->
       </td>
 
-      <td>
+      <td class="text-center">
         <ng-container *ngIf="selectedServiceNumberRecord">
           {{ selectedServiceNumberRecord.baseUnitOfMeasurement }}
         </ng-container>
@@ -1310,13 +1242,13 @@
         </ng-container>
       </td>
 
-      <td>
+      <td class="text-center">
         <ng-container *ngIf="modelSpecRecord">
           {{ modelSpecRecord.currencyCode }}
         </ng-container>
       </td>
 
-      <td>
+      <td class="text-center">
         <input
           pInputNumber
           class="rounded-input"
@@ -1327,7 +1259,7 @@
         />
       </td>
 
-      <td>
+      <td class="text-center">
         <input
           name="priceChangedAllowed"
           type="checkbox"
@@ -1335,7 +1267,7 @@
         />
       </td>
 
-      <td>
+      <td class="text-center">
         <input
           name="unlimitedOverFulfillment"
           type="checkbox"
@@ -1343,7 +1275,7 @@
         />
       </td>
 
-      <td>
+      <td class="text-center">
         <input
           pInputNumber
           class="rounded-input"
@@ -1354,17 +1286,8 @@
         />
       </td>
 
-      <td>
-        <!-- <p-dropdown  optionLabel="code"
-                    [filter]="true" filterBy="code" [showClear]="true" placeholder="Select Mat.Grp">
-                    <ng-template let-country pTemplate="item">
-                        <div class="flex align-items-center gap-2">
-                            <div>{{ country.code }}::{{ country.description }}</div>
-                        </div>
-                    </ng-template>
-                </p-dropdown> -->
+      <td class="text-center">
         <ng-container *ngIf="selectedServiceNumberRecord">
-          <!-- {{ selectedServiceNumberRecord.materialGroupCode }} -->
           {{ selectedServiceNumberRecord.materialGroupCode }}
         </ng-container>
         <ng-container *ngIf="!selectedServiceNumberRecord">
@@ -1391,7 +1314,7 @@
         </ng-container>
       </td>
 
-      <td>
+      <td class="text-center">
         <ng-container *ngIf="selectedServiceNumberRecord">
           {{ selectedServiceNumberRecord.serviceTypeCode }}
         </ng-container>
@@ -1418,7 +1341,7 @@
         </ng-container>
       </td>
 
-      <td>
+      <td class="text-center">
         <input
           pInputText
           class="rounded-input"
@@ -1428,7 +1351,7 @@
         />
       </td>
 
-      <td>
+      <td class="text-center">
         <ng-container *ngIf="selectedServiceNumberRecord">
           {{ selectedServiceNumberRecord.serviceText }}
         </ng-container>
@@ -1442,7 +1365,7 @@
         </ng-container>
       </td>
 
-      <td>
+      <td class="text-center">
         <input
           pInputText
           class="rounded-input"
@@ -1452,7 +1375,7 @@
         />
       </td>
 
-      <td>
+      <td class="text-center">
         <p-dropdown
           [options]="recordsPersonnelNumber"
           [(ngModel)]="selectedPersonnelNumber"
@@ -1474,7 +1397,7 @@
         </p-dropdown>
       </td>
 
-      <td>
+      <td class="text-center">
         <p-dropdown
           [options]="recordsLineType"
           [(ngModel)]="selectedLineType"
@@ -1496,7 +1419,7 @@
         </p-dropdown>
       </td>
 
-      <td>
+      <td class="text-center">
         <input
           pInputText
           class="rounded-input"
@@ -1506,7 +1429,7 @@
         />
       </td>
 
-      <td>
+      <td class="text-center">
         <input
           pInputText
           class="rounded-input"
@@ -1516,7 +1439,7 @@
         />
       </td>
 
-      <td>
+      <td class="text-center">
         <input
           name="biddersLine"
           type="checkbox"
@@ -1524,7 +1447,7 @@
         />
       </td>
 
-      <td>
+      <td class="text-center">
         <input
           name="supplementaryLine"
           type="checkbox"
@@ -1532,7 +1455,7 @@
         />
       </td>
 
-      <td>
+      <td class="text-center">
         <input
           name="lotSizeForCostingIsOne"
           type="checkbox"
@@ -1540,7 +1463,7 @@
         />
       </td>
 
-      <td>
+      <td class="text-center">
         <button
           pButton
           type="button"
