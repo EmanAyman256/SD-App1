@@ -1,39 +1,9 @@
 <!-- Service Master Data -->
 <div class="card mt-5">
   <p-toast></p-toast>
-  <!-- <div class="grid ">
-        <div class="col-4">
-            <div class="field">
-                <input pInputText type="text" placeholder="Search...."
-                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary "
-                    [(ngModel)]="searchValue" (input)="onSearchInputChange()" />
-            </div>
-
-        </div>
-        <div class="col-2">
-            <button pButton label="Create" size="small" icon="pi pi-plus" (click)="navigateAddServices()"
-            class="ms-1"></button>
-
-        </div>
-        <div class="col-2">
-            <button pButton label="Details" size="small" (click)="navigateDetailServices()"
-            class="ms-1"></button>
-        </div>
-        <div class="col-2">
-            <button pButton label="Edit" size="small" (click)="navigateEditService()" class=" edit-button"></button>
-
-        </div>
-        <div class="col-1">
-            <button pButton label="Export" size="small" (click)="exportExcel()" icon="pi pi-upload"
-            class="ms-1"></button>
-        </div>
-        <div class="col-1">
-            <button pButton pRipple icon="pi pi-copy" size="small"  class="ms-1" (click)="navigateCopyService()"></button>
-        </div>
-     </div> -->
   <p-toolbar styleClass="mb-4 gap-2">
-    <ng-template pTemplate="left" >
-        <div class="field search-container">
+    <ng-template pTemplate="left" class="flex">
+        <div class="field search-container justify-content-start" >
           <input
             pInputText
             type="text"
@@ -45,7 +15,7 @@
       </div>
     </ng-template>
     <ng-template pTemplate="right">
-        <div class="button-group">
+        <div class="button-group flex-wrap flex-column">
             <p-button
               [outlined]="true"   
               label="Create"
